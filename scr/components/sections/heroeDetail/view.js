@@ -1,5 +1,5 @@
 import React from 'react'
-import { View, Text, Image } from 'react-native'
+import { View, Text, Image, ScrollView } from 'react-native'
 import styles from './styles'
 import { Button } from '../../widgets'
 
@@ -11,16 +11,18 @@ export default class HeroeDetail extends React.Component {
         const heroeDescription = heroe && heroe.description ? heroe.description : ''
 
         return (
-            <View style={styles.container}>
-                <Image source={image} resizeMode={'cover'} style={styles.image} />
-                <View style={styles.dataContainer}>
-                    <Text style={styles.titleStyle}>{'Description:'}</Text>
-                    <Text style={styles.text}>{heroeDescription}</Text>
+            <ScrollView style={{ backgroundColor: 'rgb(24,24,24)' }}>
+                <View style={styles.container}>
+                    <Image source={image} resizeMode={'cover'} style={styles.image} />
+                    <View style={styles.dataContainer}>
+                        <Text style={styles.titleStyle}>{'Description:'}</Text>
+                        <Text style={styles.text}>{heroeDescription}</Text>
+                    </View>
+                    <View style={{ margin: 20 }}>
+                        <Button />
+                    </View>
                 </View>
-                <View style={{ margin: 20 }}>
-                    <Button />
-                </View>
-            </View>
+            </ScrollView>
         )
     }
 }

@@ -5,7 +5,7 @@ import styles from './styles'
 export default class extends Component {
 
     static defaultProps = {
-        label: 'Editar',
+        label: 'Edit',
         onPress: () => { },
     }
 

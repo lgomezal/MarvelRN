@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
-import { StatusBar } from 'react-native'
+import { StatusBar, TouchableOpacity, Text } from 'react-native'
 import { Router, Scene, Actions, Stack } from 'react-native-router-flux'
-import { Heroes, HeroeDetail } from './sections'
+import { Heroes, HeroeDetail, HeroeAdd } from './sections'
 import { configureAxios } from '../api'
 
 import { createStore, applyMiddleware, combineReducers } from 'redux'
@@ -21,6 +21,12 @@ const sceneDefaultStyles = {
   backButtonTextStyle: { color: 'rgb(255,0,37)' },
   titleStyle: { color: 'rgb(255,0,37)', fontSize: 20, fontWeight: 'bold' },
 }
+
+const RightButton = props => (
+  <TouchableOpacity style={{ padding: 10 }} onPress={() => Actions.heroeAdd()}>
+    <Text style={{ color: 'white', fontWeight: 'bold' }}>{'Add Heroe'}</Text>
+  </TouchableOpacity >
+)
 export default class App extends Component {
 
   componentWillMount() {
@@ -37,10 +43,16 @@ export default class App extends Component {
               component={Heroes}
               title='Heroes'
               {...sceneDefaultStyles}
+              renderRightButton={RightButton}
               initial={true}
             />
             <Scene key='heroeDetail'
               component={HeroeDetail}
+              {...sceneDefaultStyles}
+            />
+            <Scene key='heroeAdd'
+              component={HeroeAdd}
+              title='Add Heroe'
               {...sceneDefaultStyles}
             />
           </Stack>
