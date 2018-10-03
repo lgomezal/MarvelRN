@@ -9,8 +9,6 @@ export default class HeroeCell extends Component {
         onHeroePress: () => { },
     }
 
-    //style = { styles.cellContainer }
-
     render() {
         const { heroe, selected } = this.props
         const name = heroe ? heroe.name : ''

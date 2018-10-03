@@ -14,6 +14,13 @@ const store = createStore(
   reducer,
   applyMiddleware(thunk)
 )
+
+const sceneDefaultStyles = {
+  navigationBarStyle: { backgroundColor: 'rgb(24,24,24)' },
+  backButtonTintColor: 'rgb(255,0,37)',
+  backButtonTextStyle: { color: 'rgb(255,0,37)' },
+  titleStyle: { color: 'rgb(255,0,37)', fontSize: 20, fontWeight: 'bold' },
+}
 export default class App extends Component {
 
   componentWillMount() {
@@ -28,17 +35,13 @@ export default class App extends Component {
           <Stack key='root'>
             <Scene key='heroes'
               component={Heroes}
-              navigationBarStyle={{ backgroundColor: 'rgb(24,24,24)' }}
               title='Heroes'
-              titleStyle={{ color: 'rgb(255,0,37)', fontSize: 20, fontWeight: 'bold' }}
+              {...sceneDefaultStyles}
               initial={true}
             />
             <Scene key='heroeDetail'
               component={HeroeDetail}
-              navigationBarStyle={{ backgroundColor: 'rgb(24,24,24)' }}
-              backButtonTintColor={'rgb(255,0,37)'}
-              backButtonTextStyle={{ color: 'rgb(255,0,37)' }}
-              titleStyle={{ color: 'rgb(255,0,37)', fontSize: 20, fontWeight: 'bold' }}
+              {...sceneDefaultStyles}
             />
           </Stack>
         </Router>
