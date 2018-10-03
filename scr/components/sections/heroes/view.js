@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { View, Text, Button, FlatList, TouchableOpacity, Alert } from 'react-native'
+import { View, Text, Button, FlatList, TouchableOpacity, ActivityIndicator } from 'react-native'
 import { Actions } from 'react-native-router-flux'
 import { HeroeCell } from '../../widgets'
 import styles from './styles'
@@ -13,7 +13,7 @@ class Heroes extends Component {
     }
 
     _onHeroeTapped(heroe) {
-
+        this.props.onHeroeTapped(heroe)
     }
 
     _renderItem({ item }) {
@@ -22,6 +22,17 @@ class Heroes extends Component {
                 heroe={item}
                 onHeroePress={item => this._onHeroeTapped(item)}
             />
+        )
+    }
+
+    _renderActivityIndicator() {
+        if (!this.props.isFetching) {
+            return null
+        }
+        return (
+            <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center', position: 'absolute', top: 0, left: 0, bottom: 0, right: 0 }}>
+                <ActivityIndicator size='large' color={'red'} animating={true} />
+            </View>
         )
     }
 
@@ -34,6 +45,7 @@ class Heroes extends Component {
                     keyExtractor={(item, i) => 'cell' + item.id}
                     extraData={this.state}
                 />
+                {this._renderActivityIndicator()}
             </View>
         )
     }
@@ -50,6 +62,10 @@ const mapDispatchToProps = (dispatch, props) => {
     return {
         fetchHeroesList: () => {
             dispatch(HeroesActions.fetchHeroesList())
+        },
+        onHeroeTapped: (heroe) => {
+            dispatch(HeroesActions.setItem(heroe))
+            Actions.heroeDetail({ title: heroe.name })
         }
     }
 }

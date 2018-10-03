@@ -26,8 +26,20 @@ export default class App extends Component {
       <Provider store={store}>
         <Router>
           <Stack key='root'>
-            <Scene key='heroes' component={Heroes} title='Heroes' initial={true} />
-            <Scene key='heroeDetail' component={HeroeDetail} title='Heroe Detail' />
+            <Scene key='heroes'
+              component={Heroes}
+              navigationBarStyle={{ backgroundColor: 'rgb(24,24,24)' }}
+              title='Heroes'
+              titleStyle={{ color: 'rgb(255,0,37)', fontSize: 20, fontWeight: 'bold' }}
+              initial={true}
+            />
+            <Scene key='heroeDetail'
+              component={HeroeDetail}
+              navigationBarStyle={{ backgroundColor: 'rgb(24,24,24)' }}
+              backButtonTintColor={'rgb(255,0,37)'}
+              backButtonTextStyle={{ color: 'rgb(255,0,37)' }}
+              titleStyle={{ color: 'rgb(255,0,37)', fontSize: 20, fontWeight: 'bold' }}
+            />
           </Stack>
         </Router>
       </Provider>

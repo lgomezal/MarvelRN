@@ -9,24 +9,24 @@ export default class HeroeCell extends Component {
         onHeroePress: () => { },
     }
 
+    //style = { styles.cellContainer }
+
     render() {
         const { heroe, selected } = this.props
         const name = heroe ? heroe.name : ''
-
-        console.log('Heroe:', heroe)
+        const image = heroe ? { uri: heroe.thumbnail.path + '/landscape_xlarge.' + heroe.thumbnail.extension } : null
 
         return (
             <TouchableOpacity
                 onPress={() => this.props.onHeroePress(heroe)}
-                style={styles.cellContainer}
             >
                 <Image
-                    source={{ uri: heroe.thumbnail.path + '/landscape_xlarge.' + heroe.thumbnail.extension }}
+                    source={image}
                     style={styles.image}
                     resizeMode={'cover'}
                 />
-                <View style={styles.cellContainer}>
-                    <Text style={styles.name}>{name}</Text>
+                <View style={styles.detailContainer}>
+                    <Text style={styles.label}>{name}</Text>
                 </View>
             </TouchableOpacity >
         )
