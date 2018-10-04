@@ -1,8 +1,9 @@
 import { StyleSheet } from 'react-native'
+import * as Colors from '../../../commons/colors/'
 
 export default StyleSheet.create({
     buttonContainer: {
-        backgroundColor: 'rgb(255,0,37)',
+        backgroundColor: Colors.main,
         padding: 20,
         alignItems: 'center',
         justifyContent: 'center',

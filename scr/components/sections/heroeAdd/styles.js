@@ -1,14 +1,15 @@
 import { StyleSheet } from 'react-native'
+import * as Colors from '../../../commons/colors/'
 
 export default StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: 'rgb(24,24,24)'
+        backgroundColor: Colors.mainDark
 
     },
     imageContainer: {
         borderWidth: 1,
-        borderColor: 'rgb(255,0,37)',
+        borderColor: Colors.main,
         borderRadius: 20,
         height: 200,
         width: '100%'

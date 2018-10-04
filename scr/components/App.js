@@ -3,6 +3,7 @@ import { StatusBar, TouchableOpacity, Text } from 'react-native'
 import { Router, Scene, Actions, Stack } from 'react-native-router-flux'
 import { Heroes, HeroeDetail, HeroeAdd } from './sections'
 import { configureAxios } from '../api'
+import * as Colors from '../commons/colors'
 
 import { createStore, applyMiddleware, combineReducers } from 'redux'
 import { Provider, connect } from 'react-redux'
@@ -16,10 +17,10 @@ const store = createStore(
 )
 
 const sceneDefaultStyles = {
-  navigationBarStyle: { backgroundColor: 'rgb(24,24,24)' },
-  backButtonTintColor: 'rgb(255,0,37)',
-  backButtonTextStyle: { color: 'rgb(255,0,37)' },
-  titleStyle: { color: 'rgb(255,0,37)', fontSize: 20, fontWeight: 'bold' },
+  navigationBarStyle: { backgroundColor: Colors.mainDark },
+  backButtonTintColor: Colors.main,
+  backButtonTextStyle: { color: Colors.main },
+  titleStyle: { color: Colors.main, fontSize: 20, fontWeight: 'bold' },
 }
 
 const RightButton = props => (
@@ -44,7 +45,6 @@ export default class App extends Component {
               title='Heroes'
               {...sceneDefaultStyles}
               renderRightButton={RightButton}
-              initial={true}
             />
             <Scene key='heroeDetail'
               component={HeroeDetail}
@@ -54,6 +54,7 @@ export default class App extends Component {
               component={HeroeAdd}
               title='Add Heroe'
               {...sceneDefaultStyles}
+              initial={true}
             />
           </Stack>
         </Router>

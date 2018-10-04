@@ -1,4 +1,5 @@
 import { StyleSheet } from 'react-native'
+import * as Colors from '../../../commons/colors/'
 
 export default StyleSheet.create({
     cellContainer: {
@@ -22,6 +23,6 @@ export default StyleSheet.create({
         flex: 1,
         fontSize: 20,
         fontWeight: 'bold',
-        color: 'rgb(255,0,37)',
+        color: Colors.main,
     }
 })
