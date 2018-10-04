@@ -20,8 +20,9 @@ export default StyleSheet.create({
         height: '100%'
     },
     imageText: {
-        color: 'white',
+        color: Colors.main,
         fontWeight: 'bold',
+        fontSize: 18,
         position: 'absolute',
         top: '46%',
         textAlign: 'center',
