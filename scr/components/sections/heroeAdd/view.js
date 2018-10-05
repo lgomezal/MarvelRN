@@ -8,10 +8,19 @@ export default class HeroeAdd extends React.Component {
 
     constructor(props) {
         super(props)
-        this.state = {
-            name: '',
-            description: '',
-            image: null,
+        if (props.isEdit && props.heroe) {
+            console.log('props.heroe: ', props.heroe)
+            this.state = {
+                name: props.heroe.name,
+                description: props.heroe.description,
+                image: { preview: { uri: props.heroe.thumbnail.path + '/landscape_xlarge.' + props.heroe.thumbnail.extension } },
+            }
+        } else {
+            this.state = {
+                name: '',
+                description: '',
+                image: null,
+            }
         }
 
         this.options = {
@@ -43,8 +52,9 @@ export default class HeroeAdd extends React.Component {
                     name: name,
                     description: description,
                 }
-                // FUNCION PARA HACER PATCH
-                //this.props.onSubmitCharacter(data)
+                Alert.alert('Save not implemented in Marvel App',
+                    'Name new Heroe: ' + data.name + ' Description new Heroe: ' + data.description)
+                this.props.onSubmitHeroe(data)
             } else {
                 const data = {
                     name: name,
@@ -52,7 +62,7 @@ export default class HeroeAdd extends React.Component {
                     image: image.data,
 
                 }
-                Alert.alert('Post no implementado en App Marvel',
+                Alert.alert('Post not implemented in Marvel App',
                     'Name new Heroe: ' + data.name + ' Description new Heroe: ' + data.description)
                 this.props.onSubmitHeroe(data)
             }

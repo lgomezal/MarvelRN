@@ -2,6 +2,7 @@ import React from 'react'
 import { View, Text, Image, ScrollView, Animated } from 'react-native'
 import styles from './styles'
 import { Button } from '../../widgets'
+import { Actions } from 'react-native-router-flux'
 
 export default class HeroeDetail extends React.Component {
 
@@ -57,7 +58,7 @@ export default class HeroeDetail extends React.Component {
                     <View style={{ margin: 20 }}>
                         <Button
                             label={'Edit'}
-                        //onPress={() => Actions.heroeAdd({ heroe, isEdit: true })}
+                            onPress={() => Actions.heroeAdd({ heroe, isEdit: true })}
                         />
                     </View>
                 </View>

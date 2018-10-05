@@ -3,7 +3,7 @@ export const BASE_URL = 'https://gateway.marvel.com'
 export const CONTENT_TYPE = 'application/json'
 
 // Characters Endpoint
-export const CHARACTERS_ENDPOINT = '/v1/public/characters?'
+export const CHARACTERS_ENDPOINT = '/v1/public/characters?limit=50&'
 export const TIMESTAMP = 'ts=1'
 export const PUBLIC_API_KEY = '&apikey='
 export const PUBLIC_API = 'b5b60c835e8a2eda8e93cf538c005fc1'
