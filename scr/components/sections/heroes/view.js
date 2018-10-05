@@ -16,11 +16,12 @@ class Heroes extends Component {
         this.props.onHeroeTapped(heroe)
     }
 
-    _renderItem({ item }) {
+    _renderItem(item, index) {
         return (
             <HeroeCell
                 heroe={item}
                 onHeroePress={item => this._onHeroeTapped(item)}
+                index={index}
             />
         )
     }
@@ -37,11 +38,13 @@ class Heroes extends Component {
     }
 
     render() {
+        const { list } = this.props
+
         return (
             <View style={styles.container}>
                 <FlatList
-                    data={this.props.list}
-                    renderItem={data => this._renderItem(data)}
+                    data={list}
+                    renderItem={({ item, index }) => this._renderItem(item, index)}
                     keyExtractor={(item, i) => 'cell' + item.id}
                     extraData={this.state}
                 />
