@@ -45,6 +45,7 @@ export default class App extends Component {
               title='Heroes'
               {...sceneDefaultStyles}
               renderRightButton={RightButton}
+              initial={true}
             />
             <Scene key='heroeDetail'
               component={HeroeDetail}
@@ -54,7 +55,6 @@ export default class App extends Component {
               component={HeroeAdd}
               title='Add Heroe'
               {...sceneDefaultStyles}
-              initial={true}
             />
           </Stack>
         </Router>

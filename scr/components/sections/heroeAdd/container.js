@@ -1,5 +1,6 @@
 import View from './view'
 import { connect } from 'react-redux'
+import * as HeroesActions from '../../../redux/heroes/actions'
 
 const mapStateToProps = (state) => {
     return {
@@ -9,7 +10,9 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch, props) => {
     return {
-
+        onSubmitHeroe: (data) => {
+            dispatch(HeroesActions.postHeroe(data))
+        }
     }
 }
 
