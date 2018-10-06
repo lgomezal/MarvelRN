@@ -1,12 +1,12 @@
 import React, { Component } from 'react'
 import { View, Text, Button, FlatList, TouchableOpacity, ActivityIndicator } from 'react-native'
-import { Actions } from 'react-native-router-flux'
 import { HeroeCell } from '../../widgets'
 import styles from './styles'
-import { connect } from 'react-redux'
 import * as HeroesActions from '../../../redux/heroes/actions'
+import Search from 'react-native-search-box'
+import * as Colors from '../../../commons/colors'
 
-class Heroes extends Component {
+export default class Heroes extends Component {
 
     componentDidMount() {
         this.props.fetchHeroesList()
@@ -42,6 +42,16 @@ class Heroes extends Component {
 
         return (
             <View style={styles.container}>
+                <Search
+                    ref='search_box'
+                    backgroundColor={Colors.mainDark}
+                    tintColorSearch={Colors.mainDark}
+                    placeholderTextColor={Colors.main}
+                    titleCancelColor={Colors.main}
+                    tintColorDelete={Colors.main}
+                    keyboardDismissOnSubmit={true}
+                    onCancel={() => this.onCancel()}
+                    onChangeText={(text) => this.onChangeText(text)} />
                 <FlatList
                     data={list}
                     renderItem={({ item, index }) => this._renderItem(item, index)}
@@ -52,25 +62,26 @@ class Heroes extends Component {
             </View>
         )
     }
-}
 
-const mapStateToProps = (state) => {
-    return {
-        isFetching: state.heroes.isFetching,
-        list: state.heroes.list,
-    }
-}
+    onChangeText = (e) => {
+        // Filter with 3 or more characters written
+        if (e && e.length > 2) {
 
-const mapDispatchToProps = (dispatch, props) => {
-    return {
-        fetchHeroesList: () => {
-            dispatch(HeroesActions.fetchHeroesList())
-        },
-        onHeroeTapped: (heroe) => {
-            dispatch(HeroesActions.setItem(heroe))
-            Actions.heroeDetail({ title: heroe.name })
+            let text = e.toLowerCase()
+            if (!text || text === '') {
+                this.render()
+            }
+            else {
+                this.props.fetchHeroesListFiltered(text)
+            }
+        } else {
+            this.render()
         }
+
+    }
+
+    onCancel = () => {
+        this.props.fetchHeroesList()
     }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Heroes)

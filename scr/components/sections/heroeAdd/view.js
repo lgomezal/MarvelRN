@@ -3,13 +3,13 @@ import { View, Text, Image, TouchableOpacity, ScrollView, Alert } from 'react-na
 import styles from './styles'
 import { Button, TextInput } from '../../widgets'
 import ImagePicker from 'react-native-image-picker'
+import * as Colors from '../../../commons/colors/'
 
 export default class HeroeAdd extends React.Component {
 
     constructor(props) {
         super(props)
         if (props.isEdit && props.heroe) {
-            console.log('props.heroe: ', props.heroe)
             this.state = {
                 name: props.heroe.name,
                 description: props.heroe.description,
@@ -62,7 +62,7 @@ export default class HeroeAdd extends React.Component {
                     image: image.data,
 
                 }
-                Alert.alert('Post not implemented in Marvel App',
+                Alert.alert('Post method not implemented in Marvel App',
                     'Name new Heroe: ' + data.name + ' Description new Heroe: ' + data.description)
                 this.props.onSubmitHeroe(data)
             }
@@ -99,7 +99,7 @@ export default class HeroeAdd extends React.Component {
 
     render() {
         return (
-            <ScrollView style={{ backgroundColor: 'rgb(24,24,24)' }}>
+            <ScrollView style={{ backgroundColor: Colors.mainDark }}>
                 <View style={styles.container}>
                     <View style={{ padding: 20 }}>
                         <TextInput

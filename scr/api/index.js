@@ -7,8 +7,30 @@ export function configureAxios() {
 }
 
 export function fetchHeroes() {
-    const url = constans.CHARACTERS_ENDPOINT + constans.TIMESTAMP + constans.PUBLIC_API_KEY +
-        constans.PUBLIC_API + constans.HASH_KEY + constans.HASH
-    console.log('url: ', url)
+    const url =
+        constans.CHARACTERS_ENDPOINT +
+        constans.LIMIT_REG +
+        constans.TIMESTAMP +
+        constans.PUBLIC_API_KEY +
+        constans.PUBLIC_API +
+        constans.HASH_KEY +
+        constans.HASH
+    //console.log('url: ', url)
+    return axios.get(url)
+}
+
+export function fetchHeroesFiltered(text) {
+    const url =
+        constans.CHARACTERS_ENDPOINT +
+        constans.NAME_STARTS +
+        text +
+        constans.AND +
+        constans.LIMIT_REG +
+        constans.TIMESTAMP +
+        constans.PUBLIC_API_KEY +
+        constans.PUBLIC_API +
+        constans.HASH_KEY +
+        constans.HASH
+    //console.log('url: ', url)
     return axios.get(url)
 }

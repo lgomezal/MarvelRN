@@ -3,6 +3,7 @@ import { View, Text, Image, ScrollView, Animated } from 'react-native'
 import styles from './styles'
 import { Button } from '../../widgets'
 import { Actions } from 'react-native-router-flux'
+import * as Colors from '../../../commons/colors/'
 
 export default class HeroeDetail extends React.Component {
 
@@ -42,7 +43,7 @@ export default class HeroeDetail extends React.Component {
         const heroeDescription = heroe && heroe.description ? heroe.description : ''
 
         return (
-            <ScrollView style={{ backgroundColor: 'rgb(24,24,24)' }}>
+            <ScrollView style={{ backgroundColor: Colors.mainDark }}>
                 <View style={styles.container}>
                     <Animated.Image source={image} resizeMode={'cover'} style={[styles.image, { height: this.state.animatedHeight }]} />
                     <View style={styles.dataContainer}>

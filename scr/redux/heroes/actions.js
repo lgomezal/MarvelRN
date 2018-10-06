@@ -25,9 +25,27 @@ export function setItem(value) {
 
 export function fetchHeroesList() {
     return (dispatch, getState) => {
+        dispatch(setList([]))
         dispatch(setFetching(true))
         api
             .fetchHeroes()
+            .then(res => {
+                dispatch(setFetching(false))
+                dispatch(setList(res.data.data.results))
+            })
+            .catch(err => {
+                dispatch(setFetching(false))
+                console.log('fetchHeroesList error: ', err)
+            })
+    }
+}
+
+export function fetchHeroesListFiltered(text) {
+    return (dispatch, getState) => {
+        dispatch(setList([]))
+        dispatch(setFetching(true))
+        api
+            .fetchHeroesFiltered(text)
             .then(res => {
                 dispatch(setFetching(false))
                 dispatch(setList(res.data.data.results))
